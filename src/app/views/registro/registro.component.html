@@ -22,7 +22,7 @@
     </div>
   <div class="form-group">
     <label>Name</label>
-    <input #userNameRegister="ngModel"  ngModel required name="NAME_REGISTRO" for="NAME_REGISTRO" pattern="[a-zA-Z][a-zA-Z ]+" type="password" class="form-control" placeholder="Enter name">
+    <input #userNameRegister="ngModel"  ngModel required name="NOMBRE_REGISTRO" for="NOMBRE_REGISTRO" pattern="[a-zA-Z][a-zA-Z ]+" type="text" class="form-control" placeholder="Enter name">
   </div>
   <div *ngIf="userNameRegister.touched" >
     <div class="alert alert-danger" role="alert" *ngIf="userNameRegister.errors?.required">
@@ -34,7 +34,7 @@
   </div>
   <div class="form-group">
     <label>Last Name</label>
-    <input #userLastNameRegister="ngModel" pattern="[a-zA-Z][a-zA-Z ]+" ngModel required name="LAST_NAME_REGISTRO"  for="LAST_NAME_REGISTRO" type="text" class="form-control" placeholder="Enter last name">
+    <input #userLastNameRegister="ngModel" pattern="[a-zA-Z][a-zA-Z ]+" ngModel required name="APELLIDO_REGISTRO"  for="APELLIDO_REGISTRO" type="text" class="form-control" placeholder="Enter last name">
   </div>
   <div *ngIf="userLastNameRegister.touched" >
     <div class="alert alert-danger" role="alert" *ngIf="userLastNameRegister.errors?.required">
@@ -46,4 +46,3 @@
   </div>
   <button type="submit" class="btn btn-success" [disabled]="userRegistroForm.invalid">Sign Up!</button>
 </form>
-{{userModel}}

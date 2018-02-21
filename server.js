@@ -17,8 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false}));
 // Angular DIST carpeta de salida
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// usar la API
-app.use('/login_usuario', usuario);
+// usar ruta principal de la API-NODEJS
+app.use('/registro_usuario_server', usuario);
 
 // Envio de todas las peticiones de Angular
 app.get('*', (req, res)=>{
