@@ -1,19 +1,49 @@
-<form #userRegistroForm="ngForm" >
+<form #userRegistroForm="ngForm" (ngSubmit)="onSubmit(userRegistroForm)" novalidate>
   <div class="form-group">
     <label>Email address</label>
-    <input ngModel required name="CORREO_REGISTRO" type="email" class="form-control" placeholder="Enter email">
+    <input #userEmailRegister="ngModel" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" ngModel required name="CORREO_REGISTRO" for="CORREO_REGISTRO" type="email" class="form-control" placeholder="Enter email">
+  </div>
+  <div *ngIf="userEmailRegister.touched" >
+    <div class="alert alert-danger" role="alert" *ngIf="userEmailRegister.errors?.required">
+      El Email es requerido
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="userEmailRegister.errors?.pattern">
+      Es invalido
+    </div>
   </div>
   <div class="form-group">
     <label>Password</label>
-    <input ngModel required name="CORREO_REGISTRO" type="password" class="form-control" placeholder="Password">
+    <input #userPassRegister="ngModel" ngModel required name="PASSWORD_REGISTRO" for="PASSWORD_REGISTRO" type="password" class="form-control" placeholder="Password">
   </div>
+  <div *ngIf="userPassRegister.touched" >
+      <div class="alert alert-danger" role="alert" *ngIf="userPassRegister.errors?.required">
+        El Password es requerido
+      </div>
+    </div>
   <div class="form-group">
     <label>Name</label>
-    <input ngModel required name="PASSWORD_REGISTRO" type="text" class="form-control" placeholder="Enter name">
+    <input #userNameRegister="ngModel"  ngModel required name="NAME_REGISTRO" for="NAME_REGISTRO" pattern="[a-zA-Z][a-zA-Z ]+" type="password" class="form-control" placeholder="Enter name">
+  </div>
+  <div *ngIf="userNameRegister.touched" >
+    <div class="alert alert-danger" role="alert" *ngIf="userNameRegister.errors?.required">
+      El Nombre es requerido
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="userNameRegister.errors?.pattern">
+      Es invalido
+    </div>
   </div>
   <div class="form-group">
     <label>Last Name</label>
-    <input ngModel required name="LAST_NAME_REGISTRO" type="text" class="form-control" placeholder="Enter last name">
+    <input #userLastNameRegister="ngModel" pattern="[a-zA-Z][a-zA-Z ]+" ngModel required name="LAST_NAME_REGISTRO"  for="LAST_NAME_REGISTRO" type="text" class="form-control" placeholder="Enter last name">
   </div>
-  <button type="submit" class="btn btn-primary">Sign Up!</button>
+  <div *ngIf="userLastNameRegister.touched" >
+    <div class="alert alert-danger" role="alert" *ngIf="userLastNameRegister.errors?.required">
+      El Apellido es requerido
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="userLastNameRegister.errors?.pattern">
+      Es invalido
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success" [disabled]="userRegistroForm.invalid">Sign Up!</button>
 </form>
+{{userModel}}

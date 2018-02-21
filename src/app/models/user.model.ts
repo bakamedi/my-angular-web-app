@@ -1,4 +1,4 @@
-export class UserModel {
+export interface UserModel {
     CORREO: string;
     PASSWORD: string;
     NOMBRE: string;
