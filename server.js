@@ -1,14 +1,14 @@
 // librerias nodejs
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-const http = require('http');
-const mongoose = require('./src/config/mongoose');
-const app = express();
-const db = mongoose();
+const express       = require('express');
+const bodyParser    = require('body-parser');
+const path          = require('path');
+const http          = require('http');
+const mongoose      = require('./src/config/mongoose');
+const app           = express();
+const db            = mongoose();
 
 // archivo de rutas del API
-const usuario = require('./server/routes/usuario');
+const registro = require('./src/server/routes/registro.route');
 
 // Parser
 app.use(bodyParser.json());
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // usar ruta principal de la API-NODEJS
-app.use('/registro_usuario_server', usuario);
+app.use('/registro_usuario_server', registro);
 
 // Envio de todas las peticiones de Angular
 app.get('*', (req, res)=>{
