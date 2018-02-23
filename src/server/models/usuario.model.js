@@ -11,4 +11,4 @@ var usuarioSchema = new Schema({
   APELLIDO: String
 });
 
-mongoose.model('Usuario', usuarioSchema);
+module.exports = mongoose.model('Usuario', usuarioSchema);

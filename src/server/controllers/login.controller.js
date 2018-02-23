@@ -1,16 +1,24 @@
 var Usuario = require('mongoose').model('Usuario');
+var jwt = require('jsonwebtoken');
 
 exports.LogearUsuario = function(req, res){
-    Usuario.findOne({'CORREO':req.body.CORREO_LOGIN}, 'PASSWORD',function(err, usuario){
+    Usuario.find({'CORREO': req.body.CORREO_LOGIN , 'PASSWORD': req.body.PASSWORD_LOGIN },'_id',function(err, result){
         if(err){
-            console.log(err);
-            return false;
+            return handleError(err);
         }else{
-            if(usuario.PASSWORD == req.body.CORREO_LOGIN){
-                return true;
-            }
-            else{
-                return false;
+            if(result){
+                console.log(result._id);
+                var token = jwt.sign({
+                    token: result._id
+                  }, 'secreto no lo leas perro >:v', 
+                  { expiresIn: 30 * 30 },
+                  { algorithm: 'RS256'}
+                );
+                res.json({
+                    token: token
+                });
+            }else{
+                res.send(JSON.stringify('no hay nada'));
             }
         }
     });

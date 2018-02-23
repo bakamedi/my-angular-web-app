@@ -6,19 +6,23 @@ const http          = require('http');
 const mongoose      = require('./src/config/mongoose');
 const app           = express();
 const db            = mongoose();
+const cors          = require('cors');
 
 // archivo de rutas del API
 const registro = require('./src/server/routes/registro.route');
+const login = require('./src/server/routes/login.route');
 
 // Parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
+app.use(cors());
 
 // Angular DIST carpeta de salida
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // usar ruta principal de la API-NODEJS
 app.use('/registro_usuario_server', registro);
+app.use('/login_usuario_server', login)
 
 // Envio de todas las peticiones de Angular
 app.get('*', (req, res)=>{

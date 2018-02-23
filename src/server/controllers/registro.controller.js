@@ -1,24 +1,17 @@
-var newUsuario = require('mongoose').model('Usuario');
+var Usuario = require('../models/usuario.model');
 
 exports.RegistrarUsuario = function(req, res){
-    const usuario = {
+    const usuarioModel = {
         CORREO:     req.body.CORREO_REGISTRO,
         PASSWORD:   req.body.PASSWORD_REGISTRO,
         NOMBRE:     req.body.NOMBRE_REGISTRO,
         APELLIDO:   req.body.APELLIDO_REGISTRO
     }
-    const newUser = newUsuario(usuario);
-    console.log("_____________BACKEND_____________");
-    console.log(usuario);
-    console.log("_________________________________");
-    /*
-    newUser.save(function(err){
-        if(err){
-            console.log(err);
+    var newUser = new Usuario(usuarioModel);
+    newUser.save(function(err) {
+        if (err)
+            res.send(err);
             return false;
-        }else{
-            return true;
-        }
+        return true;
     });
-    */
 }

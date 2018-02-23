@@ -14,7 +14,7 @@ export class RegistroService {
   constructor(private http: Http) { }
 
   registrarUsuario(usuario): Observable<any> {
-    return this.http.post(Constants.SERVER_API + this.ruta + 'regitrar_usuario', JSON.stringify(usuario), this.options);
+    return this.http.post(Constants.SERVER_API + this.ruta + 'registrar_usuario', JSON.stringify(usuario), this.options);
   }
 
 }

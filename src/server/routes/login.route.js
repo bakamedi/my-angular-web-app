@@ -1,7 +1,7 @@
-var Usuario = require('mongoose').model('Usuario');
+var login = require('../controllers/login.controller');
 const express = require('express');
 const router = express.Router();
 
-router.post('login_usuario', usuario);
+router.post('/obtener_usuario_logeado', login.LogearUsuario);
 
 module.exports = router;

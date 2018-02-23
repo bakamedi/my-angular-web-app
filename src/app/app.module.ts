@@ -12,16 +12,35 @@ import { AppComponent } from './app.component';
 import { LoginRegisterPageComponent } from './views/login-register-page/login-register-page.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegistroComponent } from './views/registro/registro.component';
+import { BlogHomeComponent } from './views/blog-home/blog-home.component';
+import { BlogHomeNavbarComponent } from './views/blog-home-navbar/blog-home-navbar.component';
+import { BlogHomeFooterComponent } from './views/blog-home-footer/blog-home-footer.component';
+import { BlogHomePostComponent } from './views/blog-home-post/blog-home-post.component';
 
 // Servicios
 import { RegistroService } from './services/registro.service';
+import { LoginService } from './services/login.service';
+import { UsuarioService } from './services/usuario.service';
+
+// Guardias
+import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { PostComponent } from './views/post/post.component';
+import { SideRightBarComponent } from './views/side-right-bar/side-right-bar.component';
+import { ModalCreatePostComponent } from './views/modal-create-post/modal-create-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginRegisterPageComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    BlogHomeComponent,
+    BlogHomeNavbarComponent,
+    BlogHomeFooterComponent,
+    BlogHomePostComponent,
+    PostComponent,
+    SideRightBarComponent,
+    ModalCreatePostComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +50,10 @@ import { RegistroService } from './services/registro.service';
     app_routing
   ],
   providers: [
-    RegistroService
+    RegistroService,
+    LoginService,
+    UsuarioService,
+    AuthGuardGuard
   ],
   bootstrap: [AppComponent]
 })
