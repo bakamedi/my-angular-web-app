@@ -10,10 +10,13 @@ import { Router } from '@angular/router';
 })
 export class BlogHomeNavbarComponent implements OnInit {
 
+  public cookieUser = '';
   constructor(private router: Router,
               private logOutService: LoginService) { }
 
   ngOnInit() {
+    this.cookieUser = JSON.parse(localStorage.getItem('currentUser')).username;
+    console.log(this.cookieUser);
   }
 
   deslogear() {

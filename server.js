@@ -11,6 +11,7 @@ const cors          = require('cors');
 // archivo de rutas del API
 const registro = require('./src/server/routes/registro.route');
 const login = require('./src/server/routes/login.route');
+const post = require('./src/server/routes/post.route');
 
 // Parser
 app.use(bodyParser.json());
@@ -22,9 +23,10 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // usar ruta principal de la API-NODEJS
 app.use('/registro_usuario_server', registro);
-app.use('/login_usuario_server', login)
+app.use('/login_usuario_server', login);
+app.use('/post_usuario_server', post);
 
-// Envio de todas las peticiones de Angular
+app// Envio de todas las peticiones de Angular
 app.get('*', (req, res)=>{
     res.sendfile(path.join(__dirname, 'dist/index.html'));
 });
