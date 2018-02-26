@@ -1,8 +1,7 @@
 var jwt = require('jsonwebtoken');
 
 exports.VerificarToken = function(token,callback){
-  // clave debe estar aparte
-  console.log(token);
+  // clave debe estar aparte no quemado
   try {
     jwt.verify(token, 'secreto prueba proyecto', function(err, decoded) {
       if(err){
