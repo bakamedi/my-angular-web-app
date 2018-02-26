@@ -20,7 +20,6 @@ export class RegistroComponent implements OnInit {
   }
 
   onSubmit(registerForm: NgForm) {
-    console.log(registerForm.value);
     this.regitrarUsuarioForm(registerForm);
   }
 

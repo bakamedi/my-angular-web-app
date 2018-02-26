@@ -8,30 +8,36 @@
   </div>
 </div>  
 <hr>
-<div class="row">
-  <div class="col-md-12 col-xs-12">
-    <div class="card">
-      <div class="card-header">
-        Lorem Ipsum
-      </div>
-      <div class="card-body">
-        <p class="card-text text-truncate col-md-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-        <a href="#" class="btn btn-info">Leer Más</a>
-      </div>
-      <div class="card-footer">
-        <div class="row">
-          <div class="col-md-8">
-            <p class="text-left text-muted">Fecha</p>
-          </div>
-          <div class="col-md-4">
-            <a href="#" class="card-link">Editar</a>
-            <a href="#" class="card-link">Eliminar</a>
+<div *ngIf="listaPost !== []">
+  <div *ngFor="let post of listaPost" class="row" style="margin-bottom:5%">
+    <div class="col-md-12 col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          {{post.TITULO}}
+        </div>
+        <div class="card-body">
+          <p class="card-text text-truncate col-md-12">{{post.TEXTO}}</p>
+          <a href="#" class="btn btn-info">Leer Más</a>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-md-8">
+              <p class="text-left text-muted">{{post.FECHA}}</p>
+            </div>
+            <div class="col-md-4">
+              <a href="#" class="card-link">Editar</a>
+              <a href="#" class="card-link">Eliminar</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="row" *ngIf="listaPost === []">
+  <p>haz hecho ningun POSTS</p>
+</div>
+
 <hr>
 <div class="row">
   <div class="col-md-10">
@@ -45,5 +51,30 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <app-modal-create-post></app-modal-create-post>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Noticia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #usuarioPostForm="ngForm" (ngSubmit)="crearPost(usuarioPostForm)">
+          <div class="form-group">
+            <label for="formGroupExampleInput">Titulo</label>
+            <input required ngModel name="NUEVO_TITULO_POST" for="NUEVO_TITULO_POST" type="text" class="form-control" id="formGroupExampleInput" placeholder="Escribe titulo aqui">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Escribe Texto Aqui</label>
+            <textarea required ngModel name="NUEVO_TEXTO_POST" for="NUEVO_TEXTO_POST" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-info">Postear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

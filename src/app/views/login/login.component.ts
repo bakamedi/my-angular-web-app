@@ -17,12 +17,12 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
               private loginService: LoginService) {
-                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                const currentUser = JSON.parse(localStorage.getItem('username'));
                 this.token = currentUser && currentUser.token;
               }
 
   ngOnInit() {
-    if (localStorage.getItem('currentUser')) {
+    if (localStorage.getItem('username')) {
       this.router.navigate(['inicio']);
     } else {
       this.router.navigate(['login_registro']);
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     const token = response.json() && response.json().token;
       if (token) {
           this.token = token;
-          localStorage.setItem('currentUser', JSON.stringify({ username: usuarioLoginForm.value.CORREO_LOGIN, token: token }));
+          localStorage.setItem('username', JSON.stringify({ username: usuarioLoginForm.value.CORREO_LOGIN, token: token }));
           this.router.navigate(['inicio']);
       } else {
           this.router.navigate(['login_registro']);

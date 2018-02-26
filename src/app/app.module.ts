@@ -24,6 +24,7 @@ import { ModalCreatePostComponent } from './views/modal-create-post/modal-create
 import { RegistroService } from './services/registro.service';
 import { LoginService } from './services/login.service';
 import { UsuarioService } from './services/usuario.service';
+import { PostService } from './services/post.service';
 
 // Guardias
 import { AuthGuardGuard } from './guards/auth-guard.guard';
@@ -55,6 +56,7 @@ import { LoginGuard } from './guards/login.guard';
     RegistroService,
     LoginService,
     UsuarioService,
+    PostService,
     AuthGuardGuard,
     LoginGuard
   ],

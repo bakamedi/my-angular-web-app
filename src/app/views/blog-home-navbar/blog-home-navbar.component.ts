@@ -15,7 +15,7 @@ export class BlogHomeNavbarComponent implements OnInit {
               private logOutService: LoginService) { }
 
   ngOnInit() {
-    this.cookieUser = JSON.parse(localStorage.getItem('currentUser')).username;
+    this.cookieUser = JSON.parse(localStorage.getItem('username')).username;
     console.log(this.cookieUser);
   }
 
