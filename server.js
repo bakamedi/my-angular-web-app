@@ -9,9 +9,9 @@ const db            = mongoose();
 const cors          = require('cors');
 
 // archivo de rutas del API
-const registro = require('./src/server/routes/registro.route');
-const login = require('./src/server/routes/login.route');
-const post = require('./src/server/routes/post.route');
+const registro  = require('./src/server/routes/registro.route');
+const login     = require('./src/server/routes/login.route');
+const post      = require('./src/server/routes/post.route');
 
 // Parser
 app.use(bodyParser.json());

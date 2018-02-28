@@ -28,12 +28,42 @@ exports.CrearPost = function(req, res){
 
 exports.GetAllPost = function(req, res){
   jwt.VerificarToken(req.params.token, function(result){
-    Post.find({USUARIO_ID: result.token[0]._id}, function(err, findPosts){
+    Post.find({USUARIO_ID: result.token[0]._id}, 'TITULO TEXTO FECHA',function(err, findPosts){
       if(err){
         res.send(err);
       }else{
+				//console.log(findPosts);
         res.json(findPosts);
       }
-    });
+    }).sort({FECHA:-1});
+	});
+}
+
+exports.EditarPost = function(req, res){
+	jwt.VerificarToken(req.params.token, function(result){
+		Post.findById({_id:req.body.ID_POST}, '', function(err, findPosts){
+			findPosts.TITULO =	req.body.NUEVO_TITULO_POST_EDIT;
+			findPosts.TEXTO = 	req.body.NUEVO_TEXTO_POST_EDIT;
+			findPosts.FECHA =		Date.now();
+			findPosts.save(function(err){
+				if(err){
+					console.log(err);
+				}else{
+					res.status(200).end();
+				}
+			});
+		});
+	});
+}
+
+exports.EliminarPost = function(req, res){
+	jwt.VerificarToken(req.params.token, function(result){
+		Post.findByIdAndRemove({_id:req.params.idPost}, (err) =>{
+			if(err){
+				console.log(err);
+			}else{
+				res.status(200).end();
+			}
+		});
 	});
 }

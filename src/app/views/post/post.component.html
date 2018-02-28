@@ -4,14 +4,14 @@
     <h2>Mis Noticias</h2>
   </div>
   <div class="col-md-3">
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Crear Noticia</button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#crearPostModal">Crear Noticia</button>
   </div>
 </div>  
 <hr>
 <div *ngIf="listaPost !== []">
-  <div *ngFor="let post of listaPost" class="row" style="margin-bottom:5%">
+  <div *ngFor="let post of listaPost;let i = index" class="row row-post">
     <div class="col-md-12 col-xs-12">
-      <div class="card">
+      <div id="{{i}}" class="card">
         <div class="card-header">
           {{post.TITULO}}
         </div>
@@ -22,11 +22,11 @@
         <div class="card-footer">
           <div class="row">
             <div class="col-md-8">
-              <p class="text-left text-muted">{{post.FECHA}}</p>
+              <p class="text-left text-muted">{{post.FECHA | date:'fullDate'}}; Hora: {{post.FECHA | date:'shortTime'}}</p>
             </div>
             <div class="col-md-4">
-              <a href="#" class="card-link">Editar</a>
-              <a href="#" class="card-link">Eliminar</a>
+              <a href="" data-toggle="modal" data-target="#editarPostModal" (click)="tempPost(post,1)" class="card-link">Editar</a>
+              <a href="" data-toggle="modal" data-target="#eliminarPostModal" (click)="tempPost(post,0)" class="card-link">Eliminar</a>
             </div>
           </div>
         </div>
@@ -37,29 +37,34 @@
 <div class="row" *ngIf="listaPost === []">
   <p>haz hecho ningun POSTS</p>
 </div>
-
 <hr>
-<div class="row">
-  <div class="col-md-10">
-    <button type="button" class="btn btn-outline-info">Anterior</button>
-  </div>
-  <div class="col-md-2">
-    <button type="button" class="btn btn-outline-info">Siguiente</button>  
-  </div>
-</div>
-<!-- Button trigger modal -->
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Agrega POST -->
+<div class="modal fade" id="crearPostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Crear Noticia</h5>
+        <h5 class="modal-title" id="crearPostModal">Crear Noticia</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+        <form [formGroup]="formGroupPosts" novalidate>
+          <div class="form-group">
+            <label>Titulo</label>
+            <input formControlName="NUEVO_TITULO_POST" for="NUEVO_TITULO_POST" type="text" class="form-control" id="formGroupExampleInput" placeholder="Escribe titulo aqui">
+          </div>
+          <div class="form-group">
+            <label>Escribe Texto Aqui</label>
+            <textarea formControlName="NUEVO_TEXTO_POST" for="NUEVO_TEXTO_POST" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="crearPost()" data-dismiss="modal" class="btn btn-info">Postear</button>
+        </div>
+        <!--
         <form #usuarioPostForm="ngForm" (ngSubmit)="crearPost(usuarioPostForm)">
           <div class="form-group">
             <label for="formGroupExampleInput">Titulo</label>
@@ -74,7 +79,59 @@
             <button type="submit" class="btn btn-info">Postear</button>
           </div>
         </form>
+      -->
       </div>
     </div>
   </div>
 </div>
+
+<!-- Modal Editar POST -->
+<div class="modal fade" id="editarPostModal" tabindex="-1" role="dialog" aria-labelledby="c" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editarPostModal">Editar Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #formGroupPostsEdit="ngForm">
+          <div class="form-group">
+            <label>Titulo</label>
+            <input [(ngModel)]="editTitulo" name="editTitulo" for="editTitulo" type="text" class="form-control" id="formGroupExampleInput" placeholder="Escribe titulo aqui">
+          </div>
+          <div class="form-group">
+            <label>Escribe Texto Aqui</label>
+            <textarea [(ngModel)]="editTexto" name="editTexto" for="editTexto" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button (click)="editarPost()" data-dismiss="modal" type="button" class="btn btn-info">Editar Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Eliminar POST -->
+<div class="modal fade" id="eliminarPostModal" tabindex="-1" role="dialog" aria-labelledby="eliminarPostModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eliminarPostModal">Eliminar Post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Desea Eliminar este POST?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <button (click)="eliminarPost()" data-dismiss="modal" type="button" class="btn btn-info">Si Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>

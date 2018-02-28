@@ -22,4 +22,12 @@ export class PostService {
     return this.http.get(Constants.SERVER_API + this.ruta + `get_all_post/${token}`).map(res => res.json());
   }
 
+  editPost(usuarioPostEditForm, token): Observable<any> {
+    return this.http.post(Constants.SERVER_API + this.ruta + `editar_post/${token}`, JSON.stringify(usuarioPostEditForm), this.options);
+  }
+
+  deletePost(token, idPost): Observable<any> {
+    return this.http.delete(Constants.SERVER_API + this.ruta + `eliminar_post/${token}/${idPost}`, this.options);
+  }
+
 }

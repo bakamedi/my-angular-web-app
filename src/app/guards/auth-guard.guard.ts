@@ -14,6 +14,6 @@ export class AuthGuardGuard implements CanActivate {
         return true;
       }
       this.router.navigate(['/login_registro']);
-    return false;
+      return false;
   }
 }

@@ -47,6 +47,7 @@ import { LoginGuard } from './guards/login.guard';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     RouterModule,
     HttpModule,

@@ -18,11 +18,8 @@ export class UsuarioService {
               private loginService: LoginService) { }
 
   getUsers(): Observable<any> {
-      // add authorization header with jwt token
       const headers = new Headers({ 'Authorization': 'Bearer ' + this.loginService.token });
       const options = new RequestOptions({ headers: headers });
-
-      // get users from api
       return this.http.get(Constants.SERVER_API + this.ruta + 'obtener_usuario_logeado', options)
           .map((response: Response) => response.json());
   }

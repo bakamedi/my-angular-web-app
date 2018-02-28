@@ -24,9 +24,11 @@ export class LoginService {
     }
 
   logout(): void {
-      this.token = null;
       localStorage.removeItem('username');
   }
 
+  verificarSesionUsuario(token): Observable<any> {
+    return this.http.get(Constants.SERVER_API + this.ruta + `verificar_session/${token}`).map(res => res.json());
+  }
 
 }

@@ -24,4 +24,6 @@ export class BlogHomeNavbarComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+
+
 }

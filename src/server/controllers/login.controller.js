@@ -1,17 +1,17 @@
 var Usuario = require('mongoose').model('Usuario');
-var jwt = require('jsonwebtoken');
+var jwt = require('../../config/jwt');
 
 exports.LogearUsuario = function(req, res){
+	// saltear password
 	Usuario.find({CORREO: req.body.CORREO_LOGIN , PASSWORD: req.body.PASSWORD_LOGIN }, '_id',function(err, result){
 		if(err){
 			return handleError(err);
 		}else{
 			if(result != undefined){
-				var token = jwt.sign({
-					token: result
-					}, 'secreto prueba proyecto');// no debe de quedar esto en el codigo
-				res.json({
-					token: token
+				jwt.CrearToken(result, function(response){
+					res.json({
+						token: response
+					});
 				});
 			}else{
 				res.send(JSON.stringify('no hay nada'));
@@ -19,3 +19,14 @@ exports.LogearUsuario = function(req, res){
 		}
 	});
 }
+
+exports.VerificarSesionUsuario = function(req, res){
+	jwt.VerificarToken(req.params.token, function(result){
+		if(!result){
+			console.log(result);
+			res.json('TRUE');//sesion expirada
+		}else{
+			res.json('FALSE');//sesion en local
+		}
+	});
+} 
