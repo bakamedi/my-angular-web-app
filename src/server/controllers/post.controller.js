@@ -1,6 +1,6 @@
 var Usuario = require('mongoose').model('Usuario');
-var Post = require('../models/post.model');
-var jwt = require('../../config/jwt');
+var Post 		= require('../models/post.model');
+var jwt 		= require('../../config/jwt');
 
 exports.CrearPost = function(req, res){
 	jwt.VerificarToken(req.params.token, function(result){
@@ -32,7 +32,6 @@ exports.GetAllPost = function(req, res){
       if(err){
         res.send(err);
       }else{
-				//console.log(findPosts);
         res.json(findPosts);
       }
     }).sort({FECHA:-1});
