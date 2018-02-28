@@ -7,6 +7,9 @@
   </div>
 </div>  
 <hr>
+<div class="text-center">
+  <p class="lead" *ngIf="loading">Cargando Post...</p>
+</div>
 <div *ngIf="listaPost !== []">
   <div *ngFor="let post of listaPost;let i = index" class="row row-post">
     <div class="col-md-12 col-xs-12">
@@ -16,7 +19,7 @@
         </div>
         <div class="card-body">
           <p class="card-text text-truncate col-md-12">{{post.TEXTO}}</p>
-          <a href="#" class="btn btn-info">Leer Más</a>
+          <button (click)="leerPostIndividual(post._id)" class="btn btn-outline-primary">Leer Más</button>
         </div>
         <div class="card-footer">
           <div class="row">
@@ -33,9 +36,7 @@
     </div>
   </div>
 </div>
-<div class="row" *ngIf="listaPost === []">
-  <p>haz hecho ningun POSTS</p>
-</div>
+
 <hr>
 
 <!-- Modal Agrega POST -->

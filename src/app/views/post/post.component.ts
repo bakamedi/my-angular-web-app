@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { PostService } from '../../services/post.service';
 import { NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -11,15 +12,17 @@ import { NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angula
 })
 export class PostComponent implements OnInit {
 
+  loading = false;
   public idPost: String;
   public editTitulo: String;
   public editTexto: String;
-  public formGroupPostsEdit: FormGroup;
+  formGroupPostsEdit: FormGroup;
   public formGroupPosts: FormGroup;
   private state;
   public listaPost = [];
   constructor(private userPostService: PostService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private router: Router) { }
 
   ngOnInit() {
     this.crearFormularioPostAdd();
@@ -27,9 +30,11 @@ export class PostComponent implements OnInit {
   }
 
   getPosts() {
+    this.loading = true;
     this.userPostService.getAllPost(JSON.parse(localStorage.getItem('username')).token)
     .subscribe( jsonPosts => {
       this.listaPost = jsonPosts;
+      this.loading = false;
     });
   }
 
@@ -46,7 +51,7 @@ export class PostComponent implements OnInit {
   }
 
   editarPost() {
-    this.crearFormularioPostEdit(this.editTitulo, this.editTitulo, this.idPost);
+    this.crearFormularioPostEdit(this.editTitulo, this.editTexto, this.idPost);
     this.userPostService.editPost(this.formGroupPostsEdit.value, JSON.parse(localStorage.getItem('username')).token)
     .subscribe(
       res => {
@@ -68,6 +73,11 @@ export class PostComponent implements OnInit {
     );
   }
 
+  leerPostIndividual(postId) {
+    console.log(postId);
+    this.router.navigate(['/inicio/post', {onlyIdPost: postId}]);
+  }
+
   crearFormularioPostAdd() {
     this.formGroupPosts = new FormGroup({
       NUEVO_TITULO_POST: new FormControl('', Validators.required),
@@ -86,8 +96,8 @@ export class PostComponent implements OnInit {
   tempPost(valPost, valor) {
     if (valor === 1) {// editamos
       this.idPost = valPost._id;
-      this.editTitulo = valPost.TITULO;
       this.editTexto = valPost.TEXTO;
+      this.editTitulo = valPost.TITULO;
     }
     if (valor === 0) {// eliminamos
       this.idPost = valPost._id;

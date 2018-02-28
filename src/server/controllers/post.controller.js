@@ -26,6 +26,19 @@ exports.CrearPost = function(req, res){
 	});
 }
 
+exports.GetIndividualPost = function(req, res){
+	jwt.VerificarToken(req.params.token, function (result){
+		Post.findById({_id:req.params.idPost}, 'TITULO TEXTO FECHA', function(err, findOnlyPost){
+			if(err){
+				res.send(err);
+			}else{
+				console.log(findOnlyPost);
+				res.json(findOnlyPost);
+			}
+		});
+	});
+}
+
 exports.GetAllPost = function(req, res){
   jwt.VerificarToken(req.params.token, function(result){
     Post.find({USUARIO_ID: result.token[0]._id}, 'TITULO TEXTO FECHA',function(err, findPosts){

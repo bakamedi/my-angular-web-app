@@ -19,6 +19,7 @@ import { BlogHomePostComponent } from './views/blog-home-post/blog-home-post.com
 import { PostComponent } from './views/post/post.component';
 import { SideRightBarComponent } from './views/side-right-bar/side-right-bar.component';
 import { ModalCreatePostComponent } from './views/modal-create-post/modal-create-post.component';
+import { PerfilUsuarioComponent } from './views/perfil-usuario/perfil-usuario.component';
 
 // Servicios
 import { RegistroService } from './services/registro.service';
@@ -29,6 +30,7 @@ import { PostService } from './services/post.service';
 // Guardias
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { LoginGuard } from './guards/login.guard';
+import { PostIndividualComponent } from './views/post-individual/post-individual.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { LoginGuard } from './guards/login.guard';
     BlogHomePostComponent,
     PostComponent,
     SideRightBarComponent,
-    ModalCreatePostComponent
+    ModalCreatePostComponent,
+    PerfilUsuarioComponent,
+    PostIndividualComponent
   ],
   imports: [
     BrowserModule,

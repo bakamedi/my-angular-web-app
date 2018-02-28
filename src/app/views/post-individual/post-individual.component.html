@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-9">
+    <h2>Mis Noticias</h2>
+  </div>
+</div>  
+<hr>
+<div *ngIf="loading" class="text-center">
+  <p class="lead" >Cargando Post...</p>
+</div>
+<div>
+  <div class="row row-post">
+    <div class="col-md-12 col-xs-12">
+      <div class="card">
+        <div class="card-header text-center">
+          {{jsonOnlyPost['TITULO']}}
+        </div>
+        <div class="card-body text-justify">
+          <p class="card-text col-md-12">{{jsonOnlyPost['TEXTO']}}</p>
+          <button type="button" class="btn btn-outline-primary" (click)="goBack()" >Ir Atrás</button>
+        </div>
+        <div class="card-footer text-muted">
+            {{jsonOnlyPost['FECHA'] | date:'fullDate'}}; Hora: {{jsonOnlyPost['FECHA'] | date:'shortTime'}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

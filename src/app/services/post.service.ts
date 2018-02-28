@@ -18,6 +18,10 @@ export class PostService {
     return this.http.post(Constants.SERVER_API + this.ruta + `crear_post/${token}` , JSON.stringify(usuarioPostForm), this.options);
   }
 
+  getIndividualPost(token, idPost): Observable<any> {
+    return this.http.get(Constants.SERVER_API + this.ruta + `get_individual_post/${token}/${idPost}`).map(res => res.json());
+  }
+
   getAllPost(token): Observable<any> {
     return this.http.get(Constants.SERVER_API + this.ruta + `get_all_post/${token}`).map(res => res.json());
   }

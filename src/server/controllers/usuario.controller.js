@@ -4,7 +4,8 @@ var jwt     = require('../../config/jwt');
 exports.PerfilUsuario = function(req, res){
   jwt.VerificarToken(req.params.token, function(result){
     // Busca perfil usuario
-    Usuario.findById({_id:result.token[0]._id}, 'CORREO NOMBRE APELLIDO',function(err,findUser){
+    // El pasword debe de estar salteada
+    Usuario.findById({_id:result.token[0]._id}, 'CORREO PASSWORD NOMBRE APELLIDO',function(err,findUser){
 			if(err){
 				res.send(err);
 				return false;
