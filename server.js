@@ -12,6 +12,7 @@ const cors          = require('cors');
 const registro  = require('./src/server/routes/registro.route');
 const login     = require('./src/server/routes/login.route');
 const post      = require('./src/server/routes/post.route');
+const usuario   = require('./src/server/routes/usuario.route');
 
 // Parser
 app.use(bodyParser.json());
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/registro_usuario_server', registro);
 app.use('/login_usuario_server', login);
 app.use('/post_usuario_server', post);
+app.use('/perfil_usuario_server', usuario);
 
 app// Envio de todas las peticiones de Angular
 app.get('*', (req, res)=>{

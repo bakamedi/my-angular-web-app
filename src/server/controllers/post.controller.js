@@ -4,7 +4,7 @@ var jwt 		= require('../../config/jwt');
 
 exports.CrearPost = function(req, res){
 	jwt.VerificarToken(req.params.token, function(result){
-		Usuario.findOne({_id:result.token[0]._id},function(err,findUser){
+		Usuario.findOne({_id: result.token['_id']},function(err,findUser){
 			if(err){
 				res.send(err);
 				return false;
@@ -40,7 +40,10 @@ exports.GetIndividualPost = function(req, res){
 
 exports.GetAllPost = function(req, res){
   jwt.VerificarToken(req.params.token, function(result){
-    Post.find({USUARIO_ID: result.token[0]._id}, 'TITULO TEXTO FECHA',function(err, findPosts){
+		//console.log('--------------------------');
+		//console.log(result.token['_id']);
+		//console.log('--------------------------');
+    Post.find({USUARIO_ID: result.token['_id']}, 'TITULO TEXTO FECHA',function(err, findPosts){
       if(err){
         res.send(err);
       }else{

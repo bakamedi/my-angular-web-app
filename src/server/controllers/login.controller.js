@@ -3,18 +3,19 @@ var jwt = require('../../config/jwt');
 
 exports.LogearUsuario = function(req, res){
 	// saltear password
-	Usuario.find({CORREO: req.body.CORREO_LOGIN , PASSWORD: req.body.PASSWORD_LOGIN }, '_id',function(err, result){
+	Usuario.findOne({CORREO: req.body.CORREO_LOGIN , PASSWORD: req.body.PASSWORD_LOGIN }, '_id',function(err, result){
 		if(err){
 			return handleError(err);
 		}else{
-			if(result != undefined){
+			console.log(result);
+			if(result != undefined && result != [] && result != null){
 				jwt.CrearToken(result, function(response){
 					res.json({
 						token: response
 					});
 				});
 			}else{
-				res.send(JSON.stringify('no hay nada'));
+				res.send(JSON.stringify('FALSE'));
 			}
 		}
 	});

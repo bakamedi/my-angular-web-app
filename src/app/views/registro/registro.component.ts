@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 
 import { UserModel } from '../../../../src/app/models/user.model';
 import { RegistroService } from '../../services/registro.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -13,7 +14,9 @@ import { RegistroService } from '../../services/registro.service';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor( private userRegService: RegistroService ) { }
+  loading = false;
+  constructor( private userRegService: RegistroService,
+               private router: Router ) { }
 
   ngOnInit() {
 
@@ -24,8 +27,17 @@ export class RegistroComponent implements OnInit {
   }
 
   regitrarUsuarioForm(registerForm: NgForm) {
+    this.loading = true;
     this.userRegService.registrarUsuario(registerForm.value).subscribe(
-      resultRegi => console.log(resultRegi)
+      data => {
+        console.log('----------------------------');
+        console.log(data);
+        console.log('----------------------------');
+        this.router.navigate(['login']);
+      },
+      error => {
+          this.loading = false;
+      }
     );
   }
 

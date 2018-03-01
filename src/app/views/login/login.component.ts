@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  loading = false;
   public token: string;
 
   constructor(private router: Router,
@@ -30,10 +31,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(usuarioLoginForm: NgForm) {
+    this.loading = true;
     this.loginService.login(usuarioLoginForm.value).
       map(res => res).
       subscribe(
-        res => this.createLocalStorage(usuarioLoginForm, res));
+        res => {
+          this.createLocalStorage(usuarioLoginForm, res);
+        },
+        error => {
+            this.loading = false;
+        }
+    );
   }
 
   createLocalStorage(usuarioLoginForm, response) {

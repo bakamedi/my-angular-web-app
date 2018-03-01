@@ -5,7 +5,7 @@ exports.PerfilUsuario = function(req, res){
   jwt.VerificarToken(req.params.token, function(result){
     // Busca perfil usuario
     // El pasword debe de estar salteada
-    Usuario.findById({_id:result.token[0]._id}, 'CORREO PASSWORD NOMBRE APELLIDO',function(err,findUser){
+    Usuario.findById({_id:result.token['_id']}, 'CORREO PASSWORD NOMBRE APELLIDO',function(err,findUser){
 			if(err){
 				res.send(err);
 				return false;
@@ -19,7 +19,7 @@ exports.PerfilUsuario = function(req, res){
 exports.EditarUsuario = function(req, res){
   jwt.VerificarToken(req.params.token, function(result){
     // Edita perfil usuario
-    Usuario.findById({_id:result.token[0]._id}, function(err, findUser){
+    Usuario.findById({_id:result.token['_id']}, function(err, findUser){
       findUser.CORREO   =	req.body.CORREO_EDIT;
       findUser.PASSWORD = req.body.PASSWORD_EDIT;
 			findUser.NOMBRE   = req.body.NOMBRE_EDIT;

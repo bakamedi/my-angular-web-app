@@ -33,6 +33,7 @@ export class PostComponent implements OnInit {
     this.loading = true;
     this.userPostService.getAllPost(JSON.parse(localStorage.getItem('username')).token)
     .subscribe( jsonPosts => {
+      console.log(jsonPosts);
       this.listaPost = jsonPosts;
       this.loading = false;
     });

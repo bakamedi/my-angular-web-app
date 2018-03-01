@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilUsuarioComponent implements OnInit {
 
+  loading = false;
+  public editCorreo: String;
+  public editPass: String;
+  public editNombre: String;
+  public editApellido: String;
+  formGroupPerfil: FormGroup;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  crearFormularioPerfil() {
+
   }
 
 }

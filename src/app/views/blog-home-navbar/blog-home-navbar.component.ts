@@ -10,13 +10,21 @@ import { Router } from '@angular/router';
 })
 export class BlogHomeNavbarComponent implements OnInit {
 
+  navBarVisible = false;
   public cookieUser = '';
   constructor(private router: Router,
               private logOutService: LoginService) { }
 
   ngOnInit() {
-    this.cookieUser = JSON.parse(localStorage.getItem('username')).username;
-    console.log(this.cookieUser);
+    try {
+      this.cookieUser = JSON.parse(localStorage.getItem('username')).username;
+      if (this.cookieUser != null ) {
+        console.log(this.cookieUser);
+      this.navBarVisible = true;
+      }
+    } catch (error) {
+      this.navBarVisible = false;
+    }
   }
 
   deslogear() {

@@ -9,9 +9,12 @@ exports.RegistrarUsuario = function(req, res){
     }
     var newUser = new Usuario(usuarioModel);
     newUser.save(function(err) {
-        if (err)
+        if (err){
             res.send(err);
             return false;
-        return true;
+        }else{
+            console.log('usuario registrado');
+            res.status(200).end();
+        }
     });
 }
