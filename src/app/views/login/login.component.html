@@ -1,12 +1,28 @@
 <form #usuarioLoginForm="ngForm" (ngSubmit)="loginUser(usuarioLoginForm)" novalidate>
   <div class="form-group">
-    <label>Email address</label>
-    <input required ngModel name="CORREO_LOGIN" for="CORREO_LOGIN" type="email" class="form-control" placeholder="Enter email">
+    <label>Correo</label>
+    <input #userEmailLogin="ngModel" required ngModel name="CORREO_LOGIN" for="CORREO_LOGIN" type="email" class="form-control" placeholder="Enter email">
+    <div *ngIf="userEmailLogin.touched" >
+      <div class="alert alert-danger" role="alert" *ngIf="userEmailLogin.errors?.required">
+        El Correo es requerido
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="userEmailLogin.errors?.pattern">
+        Es invalido
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label>Password</label>
-    <input required ngModel name="PASSWORD_LOGIN" for="CORREO_LOGIN" type="password" class="form-control" placeholder="Password">
+    <input #userPassLogin="ngModel" required ngModel name="PASSWORD_LOGIN" for="CORREO_LOGIN" type="password" class="form-control" placeholder="Password">
+    <div *ngIf="userPassLogin.touched" >
+      <div class="alert alert-danger" role="alert" *ngIf="userPassLogin.errors?.required">
+        El Password es requerido
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="userPassLogin.errors?.pattern">
+        Es invalido
+      </div>
+    </div>
   </div>
-  <button [disabled]="loading" type="submit" class="btn btn-primary">Log In</button>
+  <button [disabled]="usuarioLoginForm.invalid" type="submit" class="btn btn-primary">Log In</button>
   <a [routerLink]="['/registro']" class="btn btn-link">Registro</a>
 </form>

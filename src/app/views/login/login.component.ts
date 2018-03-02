@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   public token: string;
 
   constructor(private router: Router,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private alertService: AlertService) {
                 const currentUser = JSON.parse(localStorage.getItem('username'));
                 this.token = currentUser && currentUser.token;
               }
@@ -39,7 +41,8 @@ export class LoginComponent implements OnInit {
           this.createLocalStorage(usuarioLoginForm, res);
         },
         error => {
-            this.loading = false;
+          this.alertService.error(error);
+          this.loading = false;
         }
     );
   }

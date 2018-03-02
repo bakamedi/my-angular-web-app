@@ -16,10 +16,10 @@
     <input #userPassRegister="ngModel" ngModel required name="PASSWORD_REGISTRO" for="PASSWORD_REGISTRO" type="password" class="form-control" placeholder="Password">
   </div>
   <div *ngIf="userPassRegister.touched" >
-      <div class="alert alert-danger" role="alert" *ngIf="userPassRegister.errors?.required">
-        El Password es requerido
-      </div>
+    <div class="alert alert-danger" role="alert" *ngIf="userPassRegister.errors?.required">
+      El Password es requerido
     </div>
+  </div>
   <div class="form-group">
     <label>Name</label>
     <input #userNameRegister="ngModel"  ngModel required name="NOMBRE_REGISTRO" for="NOMBRE_REGISTRO" pattern="[a-zA-Z][a-zA-Z ]+" type="text" class="form-control" placeholder="Enter name">
@@ -44,6 +44,6 @@
       Es invalido
     </div>
   </div>
-  <button [disabled]="loading" type="submit" class="btn btn-success" [disabled]="userRegistroForm.invalid">Registrarse!</button>  
+  <button [disabled]="loading" type="submit" class="btn btn-success" [disabled]="userRegistroForm.invalid">Registrarse!</button>
   <a [routerLink]="['/login']" class="btn btn-link">Logearse</a>
 </form>

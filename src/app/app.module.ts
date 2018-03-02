@@ -20,17 +20,20 @@ import { PostComponent } from './views/post/post.component';
 import { SideRightBarComponent } from './views/side-right-bar/side-right-bar.component';
 import { ModalCreatePostComponent } from './views/modal-create-post/modal-create-post.component';
 import { PerfilUsuarioComponent } from './views/perfil-usuario/perfil-usuario.component';
+import { AlertServiceComponent } from './views/alert-service/alert-service.component';
 
 // Servicios
 import { RegistroService } from './services/registro.service';
 import { LoginService } from './services/login.service';
 import { UsuarioService } from './services/usuario.service';
 import { PostService } from './services/post.service';
+import { AlertService } from './services/alert.service';
 
 // Guardias
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { LoginGuard } from './guards/login.guard';
 import { PostIndividualComponent } from './views/post-individual/post-individual.component';
+
 
 
 @NgModule({
@@ -47,7 +50,8 @@ import { PostIndividualComponent } from './views/post-individual/post-individual
     SideRightBarComponent,
     ModalCreatePostComponent,
     PerfilUsuarioComponent,
-    PostIndividualComponent
+    PostIndividualComponent,
+    AlertServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +65,7 @@ import { PostIndividualComponent } from './views/post-individual/post-individual
     RegistroService,
     LoginService,
     UsuarioService,
+    AlertService,
     PostService,
     AuthGuardGuard,
     LoginGuard
