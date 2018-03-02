@@ -55,7 +55,7 @@ exports.GetAllPost = function(req, res){
 
 exports.EditarPost = function(req, res){
 	jwt.VerificarToken(req.params.token, function(result){
-		Post.findById({_id:req.body.ID_POST}, '', function(err, findPosts){
+		Post.findById({_id:req.body.ID_POST}, function(err, findPosts){
 			findPosts.TITULO =	req.body.NUEVO_TITULO_POST_EDIT;
 			findPosts.TEXTO = 	req.body.NUEVO_TEXTO_POST_EDIT;
 			findPosts.FECHA =		Date.now();

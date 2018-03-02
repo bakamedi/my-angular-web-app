@@ -2,11 +2,19 @@
   <div class="card-body">
     <h5 class="card-title text-center">Datos Personales</h5>
     <hr>
-    <form #formGroupPerfil="ngForm">
+    <form #formGroupPerfil="ngForm" novalidate>
       <div class="form-row">
         <div class="form-group col-md-6 col-xs-12">
           <label>Correo</label>
-          <input required [(ngModel)]="editCorreo" name="editCorreo" type="email" class="form-control" placeholder="Correo">
+          <input #userCorreoEdit="ngModel" required [(ngModel)]="editCorreo" name="editCorreo" type="email" class="form-control" placeholder="Correo">
+          <div *ngIf="userCorreoEdit.touched" >
+            <div class="alert alert-danger" role="alert" *ngIf="userCorreoEdit.errors?.required">
+              El Email es requerido
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="userCorreoEdit.errors?.pattern">
+              Es invalido
+            </div>
+          </div>
         </div>
         <div class="form-group col-md-6 col-xs-12">
           <label>Contraseña</label>
@@ -25,5 +33,5 @@
       </div>
     </form>
   </div>
-  <button [disabled]="loading" type="button" class="btn btn-outline-primary">Guardar Cambios</button>
+  <button [disabled]="formGroupPerfil.invalid"  (click)="actualizarPerfil()" type="button" class="btn btn-outline-primary">Guardar Cambios</button>
 </div>

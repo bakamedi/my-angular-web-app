@@ -44,7 +44,6 @@
       Es invalido
     </div>
   </div>
-  <button [disabled]="loading" type="submit" class="btn btn-success" [disabled]="userRegistroForm.invalid">Registrarse!</button>
-  <img *ngIf="loading" src="https://media.giphy.com/media/MJRLrQnnLvtfi/giphy.gif" />
+  <button [disabled]="loading" type="submit" class="btn btn-success" [disabled]="userRegistroForm.invalid">Registrarse!</button>  
   <a [routerLink]="['/login']" class="btn btn-link">Logearse</a>
 </form>

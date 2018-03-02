@@ -4,23 +4,21 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Constants } from '../constantes/global';
 
-import { LoginService } from './login.service';
-
 @Injectable()
 export class UsuarioService {
 
-  private ruta = 'usuario_server/';
+  private ruta = 'perfil_usuario_server/';
   private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
   private options = new RequestOptions({ headers: this.headers });
-  public token: string;
 
-  constructor(private http: Http,
-              private loginService: LoginService) { }
+  constructor(private http: Http) { }
 
-  getUsers(): Observable<any> {
-      const headers = new Headers({ 'Authorization': 'Bearer ' + this.loginService.token });
-      const options = new RequestOptions({ headers: headers });
-      return this.http.get(Constants.SERVER_API + this.ruta + 'obtener_usuario_logeado', options)
-          .map((response: Response) => response.json());
+  getPerfil(token): Observable<any> {
+    return this.http.get(Constants.SERVER_API + this.ruta + `perfil_usuario/${token}`, this.options).map(res => res.json());
   }
+
+  editPerfil(token, usuario): Observable<any> {
+    return this.http.post(Constants.SERVER_API + this.ruta + `editar_usuario/${token}`, JSON.stringify(usuario), this.options);
+  }
+
 }

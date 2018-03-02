@@ -30,9 +30,6 @@ export class RegistroComponent implements OnInit {
     this.loading = true;
     this.userRegService.registrarUsuario(registerForm.value).subscribe(
       data => {
-        console.log('----------------------------');
-        console.log(data);
-        console.log('----------------------------');
         this.router.navigate(['login']);
       },
       error => {
