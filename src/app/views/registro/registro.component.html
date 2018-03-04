@@ -4,10 +4,10 @@
     <input #userEmailRegister="ngModel" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" ngModel required name="CORREO_REGISTRO" for="CORREO_REGISTRO" type="email" class="form-control" placeholder="Enter email">
   </div>
   <div *ngIf="userEmailRegister.touched" >
-    <div class="alert alert-danger" role="alert" *ngIf="userEmailRegister.errors?.required">
+    <div class="alert alert-danger" role="alert" *ngIf="userEmailRegister?.required">
       El Email es requerido
     </div>
-    <div class="alert alert-danger" role="alert" *ngIf="userEmailRegister.errors?.pattern">
+    <div class="alert alert-danger" role="alert" *ngIf="userEmailRegister?.pattern">
       Es invalido
     </div>
   </div>
@@ -16,7 +16,7 @@
     <input #userPassRegister="ngModel" ngModel required name="PASSWORD_REGISTRO" for="PASSWORD_REGISTRO" type="password" class="form-control" placeholder="Password">
   </div>
   <div *ngIf="userPassRegister.touched" >
-    <div class="alert alert-danger" role="alert" *ngIf="userPassRegister.errors?.required">
+    <div class="alert alert-danger" role="alert" *ngIf="userPassRegister?.required">
       El Password es requerido
     </div>
   </div>
@@ -25,10 +25,10 @@
     <input #userNameRegister="ngModel"  ngModel required name="NOMBRE_REGISTRO" for="NOMBRE_REGISTRO" pattern="[a-zA-Z][a-zA-Z ]+" type="text" class="form-control" placeholder="Enter name">
   </div>
   <div *ngIf="userNameRegister.touched" >
-    <div class="alert alert-danger" role="alert" *ngIf="userNameRegister.errors?.required">
+    <div class="alert alert-danger" role="alert" *ngIf="userNameRegister?.required">
       El Nombre es requerido
     </div>
-    <div class="alert alert-danger" role="alert" *ngIf="userNameRegister.errors?.pattern">
+    <div class="alert alert-danger" role="alert" *ngIf="userNameRegister?.pattern">
       Es invalido
     </div>
   </div>
@@ -37,10 +37,10 @@
     <input #userLastNameRegister="ngModel" pattern="[a-zA-Z][a-zA-Z ]+" ngModel required name="APELLIDO_REGISTRO"  for="APELLIDO_REGISTRO" type="text" class="form-control" placeholder="Enter last name">
   </div>
   <div *ngIf="userLastNameRegister.touched" >
-    <div class="alert alert-danger" role="alert" *ngIf="userLastNameRegister.errors?.required">
+    <div class="alert alert-danger" role="alert" *ngIf="userLastNameRegister?.required">
       El Apellido es requerido
     </div>
-    <div class="alert alert-danger" role="alert" *ngIf="userLastNameRegister.errors?.pattern">
+    <div class="alert alert-danger" role="alert" *ngIf="userLastNameRegister?.pattern">
       Es invalido
     </div>
   </div>

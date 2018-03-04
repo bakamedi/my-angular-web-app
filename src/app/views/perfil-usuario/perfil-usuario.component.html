@@ -8,10 +8,10 @@
           <label>Correo</label>
           <input #userCorreoEdit="ngModel" required [(ngModel)]="editCorreo" name="editCorreo" type="email" class="form-control" placeholder="Correo">
           <div *ngIf="userCorreoEdit.touched" >
-            <div class="alert alert-danger" role="alert" *ngIf="userCorreoEdit.errors?.required">
+            <div class="alert alert-danger" role="alert" *ngIf="userCorreoEdit?.required">
               El Email es requerido
             </div>
-            <div class="alert alert-danger" role="alert" *ngIf="userCorreoEdit.errors?.pattern">
+            <div class="alert alert-danger" role="alert" *ngIf="userCorreoEdit?.pattern">
               Es invalido
             </div>
           </div>
@@ -20,7 +20,7 @@
           <label>Contraseña</label>
           <input #userPassEdit="ngModel" required [(ngModel)]="editPass" name="editPass" type="password" class="form-control"  placeholder="Contraseña">
           <div *ngIf="userPassEdit.touched" >
-            <div class="alert alert-danger" role="alert" *ngIf="userPassEdit.errors?.required">
+            <div class="alert alert-danger" role="alert" *ngIf="userPassEdit?.required">
               El Password es requerido
             </div>
           </div>
@@ -31,10 +31,10 @@
           <label>Nombre</label>
           <input #userNameEdit="ngModel" required [(ngModel)]="editNombre" name="editTitulo" type="text" class="form-control"  placeholder="Nombre">
           <div *ngIf="userNameEdit.touched" >
-            <div class="alert alert-danger" role="alert" *ngIf="userNameEdit.errors?.required">
+            <div class="alert alert-danger" role="alert" *ngIf="userNameEdit?.required">
               El Nombre es requerido
             </div>
-            <div class="alert alert-danger" role="alert" *ngIf="userNameEdit.errors?.pattern">
+            <div class="alert alert-danger" role="alert" *ngIf="userNameEdit?.pattern">
               Es invalido
             </div>
           </div>
@@ -43,10 +43,10 @@
           <label for="inputPassword4">Apellido</label>
           <input #userLastNameEdit="ngModel" required [(ngModel)]="editApellido" name="editApellido" type="text" class="form-control" placeholder="Apellido">
           <div *ngIf="userLastNameEdit.touched" >
-            <div class="alert alert-danger" role="alert" *ngIf="userLastNameEdit.errors?.required">
+            <div class="alert alert-danger" role="alert" *ngIf="userLastNameEdit?.required">
               El Apellido es requerido
             </div>
-            <div class="alert alert-danger" role="alert" *ngIf="userLastNameEdit.errors?.pattern">
+            <div class="alert alert-danger" role="alert" *ngIf="userLastNameEdit?.pattern">
               Es invalido
             </div>
           </div>

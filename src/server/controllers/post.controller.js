@@ -62,6 +62,7 @@ exports.EditarPost = function(req, res){
 			findPosts.save(function(err){
 				if(err){
 					console.log(err);
+					res.send(err);
 				}else{
 					res.status(200).end();
 				}

@@ -3,10 +3,10 @@
     <label>Correo</label>
     <input #userEmailLogin="ngModel" required ngModel name="CORREO_LOGIN" for="CORREO_LOGIN" type="email" class="form-control" placeholder="Enter email">
     <div *ngIf="userEmailLogin.touched" >
-      <div class="alert alert-danger" role="alert" *ngIf="userEmailLogin.errors?.required">
+      <div class="alert alert-danger" role="alert" *ngIf="userEmailLogin?.required">
         El Correo es requerido
       </div>
-      <div class="alert alert-danger" role="alert" *ngIf="userEmailLogin.errors?.pattern">
+      <div class="alert alert-danger" role="alert" *ngIf="userEmailLogin?.pattern">
         Es invalido
       </div>
     </div>
@@ -15,11 +15,8 @@
     <label>Password</label>
     <input #userPassLogin="ngModel" required ngModel name="PASSWORD_LOGIN" for="CORREO_LOGIN" type="password" class="form-control" placeholder="Password">
     <div *ngIf="userPassLogin.touched" >
-      <div class="alert alert-danger" role="alert" *ngIf="userPassLogin.errors?.required">
+      <div class="alert alert-danger" role="alert" *ngIf="userPassLogin?.required">
         El Password es requerido
-      </div>
-      <div class="alert alert-danger" role="alert" *ngIf="userPassLogin.errors?.pattern">
-        Es invalido
       </div>
     </div>
   </div>

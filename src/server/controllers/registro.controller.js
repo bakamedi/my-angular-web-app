@@ -13,7 +13,6 @@ exports.RegistrarUsuario = function(req, res){
             res.send(err);
             return false;
         }else{
-            console.log('usuario registrado');
             res.status(200).end();
         }
     });

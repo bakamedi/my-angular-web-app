@@ -12,7 +12,10 @@ export class AlertServiceComponent implements OnInit {
   constructor(private alertService: AlertService) { }
 
   ngOnInit() {
-    this.alertService.getMensaje().subscribe(message => { this.message = message; });
+    this.alertService.getMensaje().subscribe(message => {
+      this.message = message;
+      console.log(this.message);
+    });
   }
 
 }

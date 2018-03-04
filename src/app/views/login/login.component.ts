@@ -38,7 +38,11 @@ export class LoginComponent implements OnInit {
       map(res => res).
       subscribe(
         res => {
+          console.log(res);
           this.createLocalStorage(usuarioLoginForm, res);
+          if (res === null) {
+            console.log('error');
+          }
         },
         error => {
           this.alertService.error(error);
