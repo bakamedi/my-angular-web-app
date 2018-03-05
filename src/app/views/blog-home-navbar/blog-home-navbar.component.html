@@ -4,7 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link"[routerLink]="['/inicio']">Inicio <span class="sr-only"></span></a>
       </li>
@@ -13,7 +13,7 @@
       <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {{cookieUser}}
       </button>
-      <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 31px, 0px); top: 0px; left: 0px; will-change: transform;">
+      <div class="dropdown-menu" x-placement="bottom-start">
         <a class="dropdown-item" [routerLink]="['/inicio/perfil']">Perfil</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" (click)="deslogear()">Cerrar Sesión</a>

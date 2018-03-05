@@ -13,13 +13,17 @@ export class BlogHomeNavbarComponent implements OnInit {
   navBarVisible = false;
   public cookieUser = '';
   constructor(private router: Router,
-              private logOutService: LoginService) { }
+              private logOutService: LoginService) {
+              }
 
   ngOnInit() {
     try {
       this.cookieUser = JSON.parse(localStorage.getItem('username')).username;
       if (this.cookieUser != null ) {
+        console.log(this.cookieUser);
         this.navBarVisible = true;
+      } else {
+        this.navBarVisible = false;
       }
     } catch (error) {
       this.navBarVisible = false;
@@ -30,7 +34,5 @@ export class BlogHomeNavbarComponent implements OnInit {
     this.logOutService.logout();
     this.router.navigate(['/']);
   }
-
-
 
 }

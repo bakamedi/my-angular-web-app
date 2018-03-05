@@ -28,10 +28,10 @@
             </div>
             <div class="card-footer">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-10 col-sm-4">
                   <p class="text-left text-muted">{{post.FECHA | date:'fullDate'}}; Hora: {{post.FECHA | date:'shortTime'}}</p>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2 col-sm-4">
                   <a href="" data-toggle="modal" data-target="#editarPostModal" (click)="tempPost(post,1)" class="card-link">Editar</a>
                   <a href="" data-toggle="modal" data-target="#eliminarPostModal" (click)="tempPost(post,0)" class="card-link">Eliminar</a>
                 </div>

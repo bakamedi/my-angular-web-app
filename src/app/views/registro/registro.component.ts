@@ -3,7 +3,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { NgForm } from '@angular/forms';
 
-import { UserModel } from '../../../../src/app/models/user.model';
 import { RegistroService } from '../../services/registro.service';
 import { Router } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
