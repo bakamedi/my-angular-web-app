@@ -19,8 +19,7 @@ export class BlogHomeNavbarComponent implements OnInit {
     try {
       this.cookieUser = JSON.parse(localStorage.getItem('username')).username;
       if (this.cookieUser != null ) {
-        console.log(this.cookieUser);
-      this.navBarVisible = true;
+        this.navBarVisible = true;
       }
     } catch (error) {
       this.navBarVisible = false;

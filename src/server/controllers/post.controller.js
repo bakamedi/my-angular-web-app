@@ -18,7 +18,7 @@ exports.CrearPost = function(req, res){
 				var newPost = Post(postModel);
 				newPost.save(function(err) {
 					if (err)
-							res.send(err);
+						res.status(500).send('post no creado');
 					res.send('post creado');
 				});
 			}
@@ -30,7 +30,7 @@ exports.GetIndividualPost = function(req, res){
 	jwt.VerificarToken(req.params.token, function (result){
 		Post.findById({_id:req.params.idPost}, 'TITULO TEXTO FECHA', function(err, findOnlyPost){
 			if(err){
-				res.send(err);
+				res.status(500).send('error al encontrar el posts');
 			}else{
 				res.json(findOnlyPost);
 			}
@@ -40,12 +40,9 @@ exports.GetIndividualPost = function(req, res){
 
 exports.GetAllPost = function(req, res){
   jwt.VerificarToken(req.params.token, function(result){
-		//console.log('--------------------------');
-		//console.log(result.token['_id']);
-		//console.log('--------------------------');
     Post.find({USUARIO_ID: result.token['_id']}, 'TITULO TEXTO FECHA',function(err, findPosts){
       if(err){
-        res.send(err);
+        res.status(500).send('error al encontrar los todos posts');
       }else{
         res.json(findPosts);
       }
@@ -61,8 +58,7 @@ exports.EditarPost = function(req, res){
 			findPosts.FECHA =		Date.now();
 			findPosts.save(function(err){
 				if(err){
-					console.log(err);
-					res.send(err);
+					res.status(500).send('error al editar el posts');
 				}else{
 					res.status(200).end();
 				}
@@ -75,7 +71,7 @@ exports.EliminarPost = function(req, res){
 	jwt.VerificarToken(req.params.token, function(result){
 		Post.findByIdAndRemove({_id:req.params.idPost}, (err) =>{
 			if(err){
-				console.log(err);
+				res.status(500).send('error al eliminar el posts');
 			}else{
 				res.status(200).end();
 			}

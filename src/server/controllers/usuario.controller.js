@@ -7,7 +7,7 @@ exports.PerfilUsuario = function(req, res){
     // El pasword debe de estar salteada
     Usuario.findById({_id: result.token['_id']}, 'CORREO PASSWORD NOMBRE APELLIDO',function(err,findUser){
 			if(err){
-				res.send(err);
+				res.status(500).send('error al encontrar el perfil del usuario');
 				return false;
 			}else{
         res.json(findUser);
@@ -26,7 +26,7 @@ exports.EditarUsuario = function(req, res){
 			findUser.APELLIDO =	req.body.APELLIDO_EDIT;
 			findUser.save(function(err){
 				if(err){
-					console.log(err);
+					res.status(500).send('error al editar al usuario');
 				}else{
 					res.status(200).end();
 				}

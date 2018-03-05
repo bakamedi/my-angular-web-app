@@ -30,7 +30,6 @@ export class PerfilUsuarioComponent implements OnInit {
       res => {
         this.cargarPerfil();
         this.loading = false;
-        console.log(res);
       },
       error => {
         this.loading = false;
@@ -46,7 +45,6 @@ export class PerfilUsuarioComponent implements OnInit {
       NOMBRE_EDIT: new FormControl(nombre, Validators.required),
       APELLIDO_EDIT: new FormControl(apellido, Validators.required)
     });
-    console.log(this.formGroupPerfil.value);
   }
 
   cargarPerfil() {

@@ -18,8 +18,6 @@ export class LoginService {
 
   login(usuarioLoginForm): Observable<any> {
     // tslint:disable-next-line:max-line-length
-    console.log(usuarioLoginForm);
-    // tslint:disable-next-line:max-line-length
     return this.http.post(Constants.SERVER_API + this.ruta + 'obtener_usuario_logeado' , JSON.stringify(usuarioLoginForm), this.options);
     }
 

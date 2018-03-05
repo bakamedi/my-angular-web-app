@@ -8,7 +8,6 @@ exports.LogearUsuario = function(req, res){
 			if(err){
 				return handleError(err);
 			}else{
-				console.log(result);
 				if(result != undefined && result != [] && result != null){
 					jwt.CrearToken(result, function(response){
 						res.json({
@@ -29,14 +28,3 @@ exports.LogearUsuario = function(req, res){
 	}
 	
 }
-
-exports.VerificarSesionUsuario = function(req, res){
-	jwt.VerificarToken(req.params.token, function(result){
-		if(!result){
-			console.log(result);
-			res.json('TRUE');//sesion expirada
-		}else{
-			res.json('FALSE');//sesion en local
-		}
-	});
-} 

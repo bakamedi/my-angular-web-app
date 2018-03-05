@@ -21,7 +21,6 @@ export class PostIndividualComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.onlyIdPost);
     this.getOnlyPost();
   }
 

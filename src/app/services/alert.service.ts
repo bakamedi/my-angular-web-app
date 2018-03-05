@@ -24,12 +24,12 @@ export class AlertService {
     });
   }
 
-  success(message: string, keepAfterNavigationChange = false) {
+  success(keepAfterNavigationChange = false) {
     this.keepAfterNavigationChange = keepAfterNavigationChange;
     this.subject.next({ type: 'success', text: ' Usuario registrado con exito' });
   }
 
-  error(message: string, keepAfterNavigationChange = false) {
+  error(keepAfterNavigationChange = false) {
     this.keepAfterNavigationChange = keepAfterNavigationChange;
     this.subject.next({ type: 'error', text: ' Usuario o Contrasena Incorrecta' });
   }

@@ -33,7 +33,6 @@ export class PostComponent implements OnInit {
     this.loading = true;
     this.userPostService.getAllPost(JSON.parse(localStorage.getItem('username')).token)
     .subscribe( jsonPosts => {
-      console.log(jsonPosts);
       this.listaPost = jsonPosts;
       this.loading = false;
     });
@@ -75,7 +74,6 @@ export class PostComponent implements OnInit {
   }
 
   leerPostIndividual(postId) {
-    console.log(postId);
     this.router.navigate(['/inicio/post', {onlyIdPost: postId}]);
   }
 

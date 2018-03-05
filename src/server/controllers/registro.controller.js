@@ -10,7 +10,7 @@ exports.RegistrarUsuario = function(req, res){
     var newUser = new Usuario(usuarioModel);
     newUser.save(function(err) {
         if (err){
-            res.send(err);
+            res.status(500).send('error al registrar usuario');
             return false;
         }else{
             res.status(200).end();
