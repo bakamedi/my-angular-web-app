@@ -1,6 +1,19 @@
 # MyAngularBlogWebApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
+This project used [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) version 8.1.1.
+This project used [Mongoose](https://github.com/Automattic/mongoose) version 5.0.6.
+This project used [MongoDB](https://github.com/mongodb/mongo) version 3.0.2.
+This project used [cors](https://github.com/expressjs/cors) version 2.8.4.
+This project used [Express](https://github.com/expressjs/express) version 4.16.2.
+
+## CDN
+
+The project used [Bootstrap4](https://github.com/twbs/bootstrap) version 4.0
+
+## Installation
+
+$ npm install
 
 ## Development server
 
