@@ -40,4 +40,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Página para enseñanza [tutorial]
-Tutorial del uso de MEAN(Mongo,Express,Angular5,Node) con un CRUD y autenticación usando jwebtoken, guardias y rutas 
+
+Tutorial of the use of MEAN (Mongo, Express, Angular5, Node) with a CRUD and authentication using jwebtoken, guards and routes
