@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       if (token) {
           this.token = token;
           localStorage.setItem('username', JSON.stringify({ username: usuarioLoginForm.value.CORREO_LOGIN, token: token }));
-          this.router.navigate(['inicio']);
+          location.href = '/inicio';
       } else {
           this.router.navigate(['login_registro']);
       }

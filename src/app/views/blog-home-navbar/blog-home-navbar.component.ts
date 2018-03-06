@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-blog-home-navbar',
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class BlogHomeNavbarComponent implements OnInit {
 
   navBarVisible = false;
-  public cookieUser = '';
+  public cookieUser: String;
   constructor(private router: Router,
               private logOutService: LoginService) {
               }
