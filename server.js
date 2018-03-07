@@ -3,10 +3,10 @@ const express       = require('express');
 const bodyParser    = require('body-parser');
 const path          = require('path');
 const http          = require('http');
+const cors          = require('cors');
 const mongoose      = require('./src/config/mongoose');
 const app           = express();
 const db            = mongoose();
-const cors          = require('cors');
 
 // archivo de rutas del API
 const registro  = require('./src/server/routes/registro.route');

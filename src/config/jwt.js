@@ -27,3 +27,4 @@ exports.CrearToken = function(resultId, callback){
     callback(false);
   }
 }
+
