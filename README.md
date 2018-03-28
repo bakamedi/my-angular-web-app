@@ -59,4 +59,4 @@ Tutorial of the use of MEAN (Mongo, Express, Angular5, Node) with a CRUD and aut
 
 ## Página para enseñanza [tutorial]
 
-Tutorial of the use of MEAN (Mongo, Express, Angular5, Node) with a CRUD and authentication using jwebtoken, guards and routes
+Tutorial del uso de MEAN (Mongo, Express, Angular5, Node) con un CRUD y autenticación usando jwebtoken, guardias y rutas
