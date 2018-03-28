@@ -1,12 +1,17 @@
 # MyAngularBlogWebApp
 
 ## Build With
--This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
--This project used [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) version 8.1.1.
--This project used [Mongoose](https://github.com/Automattic/mongoose) version 5.0.6.
--This project used [MongoDB](https://github.com/mongodb/mongo) version 3.0.2.
--This project used [cors](https://github.com/expressjs/cors) version 2.8.4.
--This project used [Express](https://github.com/expressjs/express) version 4.16.2.
+
+- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
+
+This Project used:
+
+- [Nodejs](https://nodejs.org/en/) Version v9.4.0
+- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) version 8.1.1.
+- [Mongoose](https://github.com/Automattic/mongoose) version 5.0.6.
+- [MongoDB](https://github.com/mongodb/mongo) version 3.0.2.
+- [cors](https://github.com/expressjs/cors) version 2.8.4.
+- [Express](https://github.com/expressjs/express) version 4.16.2.
 
 ## CDN
 
