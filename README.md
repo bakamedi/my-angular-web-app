@@ -1,11 +1,12 @@
 # MyAngularBlogWebApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
-This project used [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) version 8.1.1.
-This project used [Mongoose](https://github.com/Automattic/mongoose) version 5.0.6.
-This project used [MongoDB](https://github.com/mongodb/mongo) version 3.0.2.
-This project used [cors](https://github.com/expressjs/cors) version 2.8.4.
-This project used [Express](https://github.com/expressjs/express) version 4.16.2.
+## Build With
+-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
+-This project used [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) version 8.1.1.
+-This project used [Mongoose](https://github.com/Automattic/mongoose) version 5.0.6.
+-This project used [MongoDB](https://github.com/mongodb/mongo) version 3.0.2.
+-This project used [cors](https://github.com/expressjs/cors) version 2.8.4.
+-This project used [Express](https://github.com/expressjs/express) version 4.16.2.
 
 ## CDN
 
@@ -42,6 +43,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Author
+
+Bakke Andrés Medina Abarca
 
 ## Page for teaching [tutorial]
 
