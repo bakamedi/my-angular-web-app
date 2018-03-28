@@ -15,9 +15,11 @@ The project used [Bootstrap4](https://github.com/twbs/bootstrap) version 4.0
 
 $ npm install
 
-## Development server
+## Development server WEB
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Development server API
 
 Run `node serve.js` for de api server is `http://localhost:3000/` for consume it.
 
