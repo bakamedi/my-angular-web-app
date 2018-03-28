@@ -42,7 +42,7 @@
       </div>
     </div>
     <hr>
-    <!-- Modal Agrega POST -->
+    <!-- Modal Crea POST -->
     <div class="modal fade" id="crearPostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -56,11 +56,17 @@
             <form [formGroup]="formGroupPosts" novalidate>
               <div class="form-group">
                 <label>Titulo</label>
-                <input formControlName="NUEVO_TITULO_POST" for="NUEVO_TITULO_POST" type="text" class="form-control" id="formGroupExampleInput" placeholder="Escribe titulo aqui">
+                <input  formControlName="NUEVO_TITULO_POST" 
+                        for="NUEVO_TITULO_POST" 
+                        type="text" class="form-control" 
+                        placeholder="Escribe titulo aqui">
               </div>
               <div class="form-group">
                 <label>Escribe Texto Aqui</label>
-                <textarea formControlName="NUEVO_TEXTO_POST" for="NUEVO_TEXTO_POST" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea formControlName="NUEVO_TEXTO_POST" 
+                          for="NUEVO_TEXTO_POST" 
+                          class="form-control" 
+                          rows="3"></textarea>
               </div>
             </form>
             <div class="modal-footer">
