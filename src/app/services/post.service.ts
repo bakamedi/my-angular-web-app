@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Constants } from '../constantes/global';
+import { Constants } from '../constants/global';
+import { ApiPost } from '../constants/api.global.post';
 import { map } from 'rxjs/operators';
 
 @Injectable()
 export class PostService {
 
-  private ruta = 'post_usuario_server/';
   private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
   private options = new RequestOptions({ headers: this.headers });
 
@@ -15,23 +15,27 @@ export class PostService {
 
   crearPost(usuarioPostForm, token): Observable<any> {
     // tslint:disable-next-line:max-line-length
-    return this.http.post(Constants.SERVER_API + this.ruta + `crear_post/${token}` , JSON.stringify(usuarioPostForm), this.options);
+    return this.http.post(Constants.SERVER_API + '' + Constants.SERVER_API_USUARIO_POST + `${ApiPost.API_POST_CREATE_POST}${token}` , JSON.stringify(usuarioPostForm), this.options);
   }
 
   getIndividualPost(token, idPost): Observable<any> {
-    return this.http.get(Constants.SERVER_API + this.ruta + `get_individual_post/${token}/${idPost}`).map(res => res.json());
+    // tslint:disable-next-line:max-line-length
+    return this.http.get(Constants.SERVER_API + '' + Constants.SERVER_API_USUARIO_POST + `${ApiPost.API_GET_INDV_POST}${token}/${idPost}`).map(res => res.json());
   }
 
   getAllPost(token): Observable<any> {
-    return this.http.get(Constants.SERVER_API + this.ruta + `get_all_post/${token}`).map(res => res.json());
+    // tslint:disable-next-line:max-line-length
+    return this.http.get(Constants.SERVER_API + '' + Constants.SERVER_API_USUARIO_POST + `${ApiPost.API_GET_ALL_POST}${token}`).map(res => res.json());
   }
 
   editPost(usuarioPostEditForm, token): Observable<any> {
-    return this.http.post(Constants.SERVER_API + this.ruta + `editar_post/${token}`, JSON.stringify(usuarioPostEditForm), this.options);
+    // tslint:disable-next-line:max-line-length
+    return this.http.post(Constants.SERVER_API + '' + Constants.SERVER_API_USUARIO_POST + `${ApiPost.API_POST_EDIT_POST}${token}`, JSON.stringify(usuarioPostEditForm), this.options);
   }
 
   deletePost(token, idPost): Observable<any> {
-    return this.http.delete(Constants.SERVER_API + this.ruta + `eliminar_post/${token}/${idPost}`, this.options);
+    // tslint:disable-next-line:max-line-length
+    return this.http.delete(Constants.SERVER_API + '' + Constants.SERVER_API_USUARIO_POST + `${ApiPost.API_GET_DEL_POST}${token}/${idPost}`, this.options);
   }
 
 }

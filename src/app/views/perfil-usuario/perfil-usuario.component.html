@@ -56,3 +56,9 @@
   </div>
   <button [disabled]="formGroupPerfil.invalid"  (click)="actualizarPerfil()" type="button" class="btn btn-outline-primary">Guardar Cambios</button>
 </div>
+<div *ngIf="loadingExito" class="alert alert-success" role="alert">
+  Se ha guardado los datos exitosamente!
+</div>
+<div *ngIf="loadingError" class="alert alert-danger" role="alert">
+  No se ha podido guardar los datos intentelo de nuevo!
+</div>  

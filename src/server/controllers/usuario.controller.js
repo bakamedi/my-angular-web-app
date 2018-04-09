@@ -3,7 +3,6 @@ var jwt     = require('../../config/jwt');
 
 exports.PerfilUsuario = function(req, res){
   jwt.VerificarToken(req.params.token, function(result){
-    // Busca perfil usuario
     // El pasword debe de estar salteada
     Usuario.findById({_id: result.token['_id']}, 'CORREO PASSWORD NOMBRE APELLIDO',function(err,findUser){
 			if(err){
@@ -18,7 +17,6 @@ exports.PerfilUsuario = function(req, res){
 
 exports.EditarUsuario = function(req, res){
   jwt.VerificarToken(req.params.token, function(result){
-		console.log(result);
     Usuario.findById({_id: result.token['_id']}, function(err, findUser){
       findUser.CORREO   =	req.body.CORREO_EDIT;
       findUser.PASSWORD = req.body.PASSWORD_EDIT;

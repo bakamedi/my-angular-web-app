@@ -21,5 +21,6 @@
     </div>
   </div>
   <button [disabled]="usuarioLoginForm.invalid" type="submit" class="btn btn-primary">Log In</button>
+  <p *ngIf="loading">Logeando Espere...</p>
   <a [routerLink]="['/registro']" class="btn btn-link">Registro</a>
 </form>

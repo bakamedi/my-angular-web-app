@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem('username')) {
       this.router.navigate(['inicio']);
     } else {
-      this.router.navigate(['login_registro']);
+      this.router.navigate(['login']);
     }
   }
 
-  loginUser(usuarioLoginForm: NgForm) {
+  loginUser(usuarioLoginForm: NgForm): void {
     this.loading = true;
     this.loginService.login(usuarioLoginForm.value).
       map(res => res).
@@ -47,14 +47,14 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  createLocalStorage(usuarioLoginForm, response) {
+  createLocalStorage(usuarioLoginForm, response): void {
     const token = response.json() && response.json().token;
       if (token) {
           this.token = token;
           localStorage.setItem('username', JSON.stringify({ username: usuarioLoginForm.value.CORREO_LOGIN, token: token }));
           location.href = '/inicio';
       } else {
-          this.router.navigate(['login_registro']);
+          this.router.navigate(['login']);
       }
   }
 

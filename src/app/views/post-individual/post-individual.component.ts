@@ -24,11 +24,11 @@ export class PostIndividualComponent implements OnInit {
     this.getOnlyPost();
   }
 
-  goBack() {
+  goBack(): void {
     this.router.navigate(['inicio']);
   }
 
-  getOnlyPost() {
+  getOnlyPost(): void  {
     this.postService.getIndividualPost(JSON.parse(localStorage.getItem('username')).token, this.onlyIdPost).subscribe( res => {
       this.jsonOnlyPost = res;
       this.loading = false;

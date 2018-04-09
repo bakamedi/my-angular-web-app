@@ -23,11 +23,11 @@ export class RegistroComponent implements OnInit {
 
   }
 
-  onSubmit(registerForm: NgForm) {
+  onSubmit(registerForm: NgForm): void {
     this.regitrarUsuarioForm(registerForm);
   }
 
-  regitrarUsuarioForm(registerForm: NgForm) {
+  regitrarUsuarioForm(registerForm: NgForm): void {
     this.loading = true;
     this.userRegService.registrarUsuario(registerForm.value).subscribe(
       data => {

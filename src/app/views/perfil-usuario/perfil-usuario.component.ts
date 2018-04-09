@@ -9,7 +9,9 @@ import { UsuarioService } from '../../services/usuario.service';
 })
 export class PerfilUsuarioComponent implements OnInit {
 
-  loading = false;
+  loadingPost = true;
+  loadingExito = false;
+  loadingError = false;
   public editCorreo: String;
   public editPass: String;
   public editNombre: String;
@@ -22,23 +24,25 @@ export class PerfilUsuarioComponent implements OnInit {
     this.cargarPerfil();
   }
 
-  actualizarPerfil() {
-    this.loading = true;
+  actualizarPerfil(): void {
+    this.loadingPost = false;
     this.crearFormularioPerfil(this.editCorreo, this.editPass, this.editNombre, this.editApellido);
     this.usuarioService.editPerfil(JSON.parse(localStorage.getItem('username')).token, this.formGroupPerfil.value)
     .subscribe(
       res => {
         this.cargarPerfil();
-        this.loading = false;
+        this.loadingExito = true;
+        this.loadingError = false;
       },
       error => {
-        this.loading = false;
+        this.loadingError = true;
+        this.loadingExito = false;
         console.log(error);
       }
     );
   }
 
-  crearFormularioPerfil(correo, pass, nombre, apellido) {
+  crearFormularioPerfil(correo, pass, nombre, apellido): void {
     this.formGroupPerfil = new FormGroup({
       CORREO_EDIT: new FormControl(correo, Validators.required),
       PASSWORD_EDIT: new FormControl(pass, Validators.required),
@@ -47,7 +51,7 @@ export class PerfilUsuarioComponent implements OnInit {
     });
   }
 
-  cargarPerfil() {
+  cargarPerfil(): void {
     this.usuarioService.getPerfil(JSON.parse(localStorage.getItem('username')).token).subscribe(
       res => {
         this.editCorreo   = res.CORREO;

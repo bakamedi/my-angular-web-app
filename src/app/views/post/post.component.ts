@@ -29,7 +29,7 @@ export class PostComponent implements OnInit {
     this.getPosts();
   }
 
-  getPosts() {
+  getPosts(): void {
     this.loading = true;
     this.userPostService.getAllPost(JSON.parse(localStorage.getItem('username')).token)
     .subscribe( jsonPosts => {
@@ -38,7 +38,7 @@ export class PostComponent implements OnInit {
     });
   }
 
-  crearPost() {
+  crearPost(): void {
     this.userPostService.crearPost(this.formGroupPosts.value, JSON.parse(localStorage.getItem('username')).token)
     .subscribe(
      res =>  {
@@ -50,7 +50,7 @@ export class PostComponent implements OnInit {
     );
   }
 
-  editarPost() {
+  editarPost(): void {
     this.crearFormularioPostEdit(this.editTitulo, this.editTexto, this.idPost);
     this.userPostService.editPost(this.formGroupPostsEdit.value, JSON.parse(localStorage.getItem('username')).token)
     .subscribe(
@@ -62,7 +62,7 @@ export class PostComponent implements OnInit {
     );
   }
 
-  eliminarPost() {
+  eliminarPost(): void {
     console.log('eliminar post');
     this.userPostService.deletePost(JSON.parse(localStorage.getItem('username')).token, this.idPost)
     .subscribe( res => {
@@ -73,18 +73,18 @@ export class PostComponent implements OnInit {
     );
   }
 
-  leerPostIndividual(postId) {
+  leerPostIndividual(postId): void {
     this.router.navigate(['/inicio/post', {onlyIdPost: postId}]);
   }
 
-  crearFormularioPostAdd() {
+  crearFormularioPostAdd(): void {
     this.formGroupPosts = new FormGroup({
       NUEVO_TITULO_POST: new FormControl('', Validators.required),
       NUEVO_TEXTO_POST: new FormControl('', Validators.required)
     });
   }
 
-  crearFormularioPostEdit(editTitulo, editTexto, idPost) {
+  crearFormularioPostEdit(editTitulo, editTexto, idPost): void {
     this.formGroupPostsEdit = new FormGroup({
       NUEVO_TITULO_POST_EDIT: new FormControl(editTitulo, Validators.required),
       NUEVO_TEXTO_POST_EDIT: new FormControl(editTexto, Validators.required),
@@ -92,7 +92,7 @@ export class PostComponent implements OnInit {
     });
   }
 
-  tempPost(valPost, valor) {
+  tempPost(valPost, valor): void {
     if (valor === 1) {// editamos
       this.idPost = valPost._id;
       this.editTexto = valPost.TEXTO;

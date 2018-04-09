@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
-// Rutas
-import { app_routing } from './app.routes';
 
 import { AppComponent } from './app.component';
+
+// Rutas
+import { app_routing } from './app.routes';
 
 // Componentes
 import { LoginComponent } from './views/login/login.component';
@@ -15,7 +16,6 @@ import { BlogHomeComponent } from './views/blog-home/blog-home.component';
 import { BlogHomeNavbarComponent } from './views/blog-home-navbar/blog-home-navbar.component';
 import { BlogHomeFooterComponent } from './views/blog-home-footer/blog-home-footer.component';
 import { PostComponent } from './views/post/post.component';
-import { SideRightBarComponent } from './views/side-right-bar/side-right-bar.component';
 import { PerfilUsuarioComponent } from './views/perfil-usuario/perfil-usuario.component';
 import { AlertServiceComponent } from './views/alert-service/alert-service.component';
 import { PostIndividualComponent } from './views/post-individual/post-individual.component';
@@ -30,9 +30,6 @@ import { AlertService } from './services/alert.service';
 // Guardias
 import { AuthGuard } from './guards/auth.guard';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +39,6 @@ import { AuthGuard } from './guards/auth.guard';
     BlogHomeNavbarComponent,
     BlogHomeFooterComponent,
     PostComponent,
-    SideRightBarComponent,
     PerfilUsuarioComponent,
     PostIndividualComponent,
     AlertServiceComponent

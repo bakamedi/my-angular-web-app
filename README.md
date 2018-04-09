@@ -53,6 +53,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Bakke Andrés Medina Abarca
 
+## Author For Upgrade
+
+If you branch is a upgrade for improve this project for the education always will be welcome :)
+
 ## Page for teaching [tutorial]
 
 Tutorial of the use of MEAN (Mongo, Express, Angular5, Node) with a CRUD and authentication using jwebtoken, guards and routes

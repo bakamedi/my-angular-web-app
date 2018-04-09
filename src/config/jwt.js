@@ -4,7 +4,6 @@ exports.VerificarToken = function(token, callback){
   // clave debe estar aparte no quemado
   try {
     jwt.verify(token, 'secreto prueba proyecto', function(err, decoded) {
-      console.log(token);
       if(err){
         callback(false);
       }
